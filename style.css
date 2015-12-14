@@ -1,0 +1,26 @@
+body{
+	margin:0;
+	font-family:'Helvetica','Arial',sans-serif;
+}
+
+div#header{
+	margin:0;
+	background-color:#5F9B0A;
+	color:white;
+	font-style: italic;
+	overflow:hidden;
+	font-size:1.5rem;
+	height:3rem;
+}
+
+div.product{
+	padding:5px;
+}
+
+button#add{
+	float:right;
+}
+
+span.data{
+	float:right;
+}
