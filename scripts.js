@@ -11,9 +11,13 @@ function add()
 		if(pdate != null)
 		{
 			var p = {name:pname, date:new Date(pdate)};
-			products.push(p);
-			refresh();
-			save();
+			if(p.date != "Invalid Date")
+			{
+				products.push(p);
+				refresh();
+				save();
+			}
+			else alert("Invalid date! Format must be YYYY-MM-DD");
 		}
 	}
 }
