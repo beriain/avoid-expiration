@@ -30,7 +30,7 @@ function refresh()
 		var div = document.createElement("div");
 		div.setAttribute("data-index", x);
 		div.className = "product";
-		div.innerHTML = products[x].name + "<span class='data'>" + products[x].date + "</span>";
+		div.innerHTML = products[x].name + "<span class='data'>" + new Date(products[x].date).toISOString().split('T')[0] + "</span>";
 		if(new Date(products[x].date).getDate() - new Date().getDate() <= 3)
 		{
 			div.style.background = "#B90000";
