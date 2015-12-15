@@ -26,6 +26,16 @@ function refresh()
 		div.setAttribute("data-index", x);
 		div.className = "product";
 		div.innerHTML = products[x].name + "<span class='data'>" + products[x].date + "</span>";
+		if(new Date(products[x].date).getDate() - new Date().getDate() <= 3)
+		{
+			div.style.background = "#B90000";
+			div.style.color = "white";
+		}
+		if(new Date(products[x].date).getDate() - new Date().getDate() >= 3 && new Date(products[x].date).getDate() - new Date().getDate() <= 7)
+		{
+			div.style.background = "#CD6723";
+			div.style.color = "white";
+		}
 		div.onclick = function()
 		{
 			var index = this.getAttribute("data-index");
