@@ -3,14 +3,19 @@ var products = new Array();
 function add()
 {
 	pname = prompt("Add product","Product");
-	var d = new Date();
-	var fd = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
-	pdate = prompt("Expiration date", fd);
-	var p = {name:pname, date:new Date(pdate)}; 
-	products.push(p);
-	console.log("Products: " + products.length);
-	refresh();
-	save();
+	if(pname != null)
+	{
+		var d = new Date();
+		var fd = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+		pdate = prompt("Expiration date", fd);
+		if(pdate != null)
+		{
+			var p = {name:pname, date:new Date(pdate)};
+			products.push(p);
+			refresh();
+			save();
+		}
+	}
 }
 
 function refresh()
