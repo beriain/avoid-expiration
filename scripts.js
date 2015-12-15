@@ -16,7 +16,7 @@ function add()
 function refresh()
 {
 	products.sort(function(a,b){
-	  return a.date - b.date;
+	  return new Date(a.date) - new Date(b.date);
 	});
 	document.getElementById("main").innerHTML = "";
 	var x = 0;
