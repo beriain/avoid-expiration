@@ -34,6 +34,7 @@ function refresh()
 			{
 				products.splice(index, 1);
 				refresh();
+				save();
 			}
 		}
 		document.getElementById("main").appendChild(div);
