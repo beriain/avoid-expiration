@@ -4,13 +4,14 @@ body{
 }
 
 div#header{
-	margin:0;
 	background-color:#5F9B0A;
 	color:white;
 	font-style: italic;
 	overflow:hidden;
 	font-size:1.5rem;
 	height:3rem;
+	line-height:3rem;
+	padding-left:5px;
 }
 
 div.product{
@@ -19,6 +20,11 @@ div.product{
 
 button#add{
 	float:right;
+	border:none;
+	background:none;
+	position:relative;
+  	top:50%;
+  	transform:translateY(-50%);
 }
 
 span.data{
