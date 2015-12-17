@@ -67,10 +67,17 @@ function save()
 	localStorage["products"] = JSON.stringify(products);
 }
 
-function read()
+function start()
 {
-	products = JSON.parse(localStorage["products"]);
-	refresh();
+	try
+	{
+		products = JSON.parse(localStorage["products"]);
+		refresh();
+	}
+	catch(e)
+	{
+		console.log(e);
+	}
 }
 
 function daysToExpire(date)
