@@ -1,8 +1,9 @@
 var products = new Array();
+var translations = new Array();
 
 function add()
 {
-	pname = prompt("Add product","Product");
+	pname = prompt(translations[0],translations[1]);
 	if(pname != null)
 	{
 		var d = new Date();
@@ -17,7 +18,7 @@ function add()
 				refresh();
 				save();
 			}
-			else alert("Invalid date! Format must be YYYY-MM-DD");
+			else alert(translations[3]);
 		}
 	}
 }
@@ -48,7 +49,7 @@ function refresh()
 		div.onclick = function()
 		{
 			var index = this.getAttribute("data-index");
-			d = confirm("Delete " + products[index].name + "?");
+			d = confirm(translations[4] + products[index].name + "?");
 			if (d == true)
 			{
 				products.splice(index, 1);
@@ -78,6 +79,10 @@ function start()
 	{
 		console.log(e);
 	}
+	finally
+	{
+		translate();
+	}
 }
 
 function daysToExpire(date)
@@ -86,4 +91,31 @@ function daysToExpire(date)
     var mb = new Date(date).getTime() - new Date().getTime();
     var dte = mb / mpd;
     return Math.round(dte);
+}
+
+function translate()
+{
+	translations[0] = "Add product";
+	translations[1] = "Product";
+	translations[2] = "Expiration date";
+	translations[3] = "Invalid date! Format must be YYYY-MM-DD";
+	translations[4] = "Delete ";
+	if(navigator.language.substring(0, 2) == "eu")
+	{
+		document.getElementById("title").innerHTML = "Iraungitzea ekiditu";
+		translations[0] = "Produktua gehitu";
+		translations[1] = "Produktua";
+		translations[2] = "Iraungitze data";
+		translations[3] = "Akatsa data sartzerakoan!formatua UUUU-HH-EE izan behar da";
+		translations[4] = "Ezabatu ";
+	}
+	if(navigator.language.substring(0, 2) == "es")
+	{
+		document.getElementById("title").innerHTML = "Evitar caducidades";
+		translations[0] = "Añadir producto";
+		translations[1] = "Producto";
+		translations[2] = "Fecha de caducidad";
+		translations[3] = "Fecha no valida! El formato tiene que ser AAAA-MM-DD";
+		translations[4] = "Eliminar ";
+	}
 }
