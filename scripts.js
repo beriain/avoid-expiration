@@ -30,7 +30,7 @@ function refresh()
 	});
 	document.getElementById("main").innerHTML = "";
 	var x = 0;
-	while(x < products.length);
+	while(x < products.length)
 	{
 		var div = document.createElement("div");
 		div.setAttribute("data-index", x);
