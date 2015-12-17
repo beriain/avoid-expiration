@@ -35,12 +35,12 @@ function refresh()
 		div.setAttribute("data-index", x);
 		div.className = "product";
 		div.innerHTML = products[x].name + "<span class='data'>" + new Date(products[x].date).toISOString().split('T')[0] + "</span>";
-		if(new Date(products[x].date).getDate() - new Date().getDate() <= 3)
+		if(daysToExpire(products[x].date) <= 3)
 		{
 			div.style.background = "#B90000";
 			div.style.color = "white";
 		}
-		if(new Date(products[x].date).getDate() - new Date().getDate() >= 3 && new Date(products[x].date).getDate() - new Date().getDate() <= 7)
+		if(daysToExpire(products[x].date) >= 3 && daysToExpire(products[x].date) <= 7)
 		{
 			div.style.background = "#CD6723";
 			div.style.color = "white";
@@ -71,4 +71,12 @@ function read()
 {
 	products = JSON.parse(localStorage["products"]);
 	refresh();
+}
+
+function daysToExpire(date)
+{
+    var mpd = 1000 * 60 * 60 * 24;
+    var mb = new Date(date).getTime() - new Date().getTime();
+    var dte = mb / mpd;
+    return Math.round(dte);
 }
