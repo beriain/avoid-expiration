@@ -8,7 +8,7 @@ function add()
 	{
 		var d = new Date();
 		var fd = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
-		pdate = prompt("Expiration date", fd);
+		pdate = prompt(translations[2], fd);
 		if(pdate != null)
 		{
 			var p = {name:pname, date:new Date(pdate)};
