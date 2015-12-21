@@ -8,9 +8,28 @@
 	<body onload="start()">
 		<div id="header">
 			<span id="title">Avoid expiration</span>
-			<button id="add" onclick="add()"><object type="image/svg+xml" data="img/add.svg"></object></button>
+			<button id="showAddInput" onclick="showAddInput()"><object type="image/svg+xml" data="img/add.svg"></object></button>
 		</div>
 		<div id="main">
+		</div>
+		<div id="input">
+			<span id="tproduct">Product</span>
+			<input type="text" id="product" />
+			<span id="texpdate">Expiration date</span>
+			<table id="expdate">
+				<tr>
+					<td><input type="number" id="year"></td>
+					<td><input type="number" id="month" min="1" max="12"></td>
+					<td><input type="number" id="day" min="1" max="31"></td>
+				</tr>
+			</table>
+			<button id="badd" onclick="add()">Add</button>
+			<button id="bcancel1" onclick="cancel()">Cancel</button>
+		</div>
+		<div id="delete">
+			<span id="tdelete">Delete</span> <span id="pname"></span>?<br/>
+			<button id="bdelete" onclick="deleteProduct()">Delete</button>
+			<button id="bcancel2" onclick="cancel()">Cancel</button>
 		</div>
 	</body>
 </html>
