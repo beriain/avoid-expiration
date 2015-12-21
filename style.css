@@ -18,7 +18,7 @@ div.product{
 	padding:5px;
 }
 
-button#add{
+button#showAddInput{
 	float:right;
 	border:none;
 	background:none;
@@ -29,4 +29,49 @@ button#add{
 
 span.data{
 	float:right;
+}
+
+div#input{
+	position:fixed;
+	left:50%;
+    top:50%;
+	border:1px solid grey;
+	width:60%;
+	transform:translate(-50%, -50%);
+	display:none;
+	padding:5px;
+	background:white;
+}
+
+input#product{
+	width:100%;
+}
+
+table#expdate{
+	width:100%;
+}
+
+input#year{
+	width:100%;
+}
+
+input#month{
+	width:100%;
+}
+
+input#day{
+	width:100%;
+}
+
+div#delete{
+	position:fixed;
+	left:50%;
+    top:50%;
+	border:1px solid grey;
+	width:60%;
+
+	transform:translate(-50%, -50%);
+	display:none;
+	padding:5px;
+	background:white;
 }
