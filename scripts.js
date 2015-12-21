@@ -1,26 +1,48 @@
 var products = new Array();
 var translations = new Array();
+var indexToDelete = 0;
+
+function showAddInput()
+{
+	document.getElementById("input").style.display = "block";
+	document.getElementById("product").value = "";
+	document.getElementById("product").placeholder = "";
+	document.getElementById("product").focus();
+	var d = new Date();
+	document.getElementById("year").value = d.getFullYear();
+	document.getElementById("month").value = d.getMonth()+1;
+	document.getElementById("day").value = d.getDate();
+	
+	/*document.getElementById("header").style.opacity = "0.6";
+	document.getElementById("main").style.opacity = "0.6";*/
+}
 
 function add()
 {
-	pname = prompt(translations[0],translations[1]);
-	if(pname != null)
+	if(document.getElementById("product").value != "")
 	{
-		var d = new Date();
-		var fd = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
-		pdate = prompt(translations[2], fd);
-		if(pdate != null)
-		{
-			var p = {name:pname, date:new Date(pdate)};
-			if(p.date != "Invalid Date")
-			{
-				products.push(p);
-				refresh();
-				save();
-			}
-			else alert(translations[3]);
-		}
+		var pname = document.getElementById("product").value;
+		var pdate = document.getElementById("year").value
+			+"-"+checkDate(document.getElementById("month").value)
+			+"-"+checkDate(document.getElementById("day").value);
+		var p = {name:pname, date:new Date(pdate)};
+		products.push(p);
+		document.getElementById("input").style.display = "none";
+		refresh();
+		save();
 	}
+	else
+	{
+		document.getElementById("product").placeholder = translations[1];
+		document.getElementById("product").focus();
+	}
+	
+}
+
+function checkDate(d)
+{
+	if(d < 10) d = "0"+d;
+	return d;
 }
 
 function refresh()
@@ -49,13 +71,9 @@ function refresh()
 		div.onclick = function()
 		{
 			var index = this.getAttribute("data-index");
-			d = confirm(translations[4] + products[index].name + "?");
-			if (d == true)
-			{
-				products.splice(index, 1);
-				refresh();
-				save();
-			}
+			document.getElementById("pname").innerHTML = products[index].name;
+			indexToDelete = index;
+			document.getElementById("delete").style.display = "block";
 		}
 		document.getElementById("main").appendChild(div);
 		x++;
@@ -95,26 +113,50 @@ function daysToExpire(date)
 function translate()
 {
 	translations[0] = "Add product";
-	translations[1] = "Product";
+	translations[1] = "Product name is empty!";
 	translations[2] = "Expiration date";
 	translations[3] = "Invalid date! Format must be YYYY-MM-DD";
 	translations[4] = "Delete ";
 	if(navigator.language.substring(0, 2) == "eu")
 	{
 		document.getElementById("title").innerHTML = "Iraungitzea ekiditu";
+		document.getElementById("badd").innerHTML = "Gehitu";
+		document.getElementById("bcancel1").innerHTML = "Utzi";
+		document.getElementById("bcancel2").innerHTML = "Utzi";
+		document.getElementById("bdelete").innerHTML = "Ezabatu";
+		document.getElementById("tproduct").innerHTML = "Produktua";
+		document.getElementById("texpdate").innerHTML = "Iraungitze data";
+		document.getElementById("tdelete").innerHTML = "Ezabatu";
 		translations[0] = "Produktua gehitu";
-		translations[1] = "Produktua";
-		translations[2] = "Iraungitze data";
-		translations[3] = "Akatsa data sartzerakoan!formatua UUUU-HH-EE izan behar da";
-		translations[4] = "Ezabatu ";
+		translations[1] = "Produktuaren izena hutsik dago!";
+		translations[2] = "Akatsa data sartzerakoan!formatua UUUU-HH-EE izan behar da";
 	}
 	if(navigator.language.substring(0, 2) == "es")
 	{
 		document.getElementById("title").innerHTML = "Evitar caducidades";
+		document.getElementById("badd").innerHTML = "Añadir";
+		document.getElementById("bcancel1").innerHTML = "Cancelar";
+		document.getElementById("bcancel2").innerHTML = "Cancelar";
+		document.getElementById("bdelete").innerHTML = "Eliminar";
+		document.getElementById("tproduct").innerHTML = "Producto";
+		document.getElementById("texpdate").innerHTML = "Fecha de caducidad";
+		document.getElementById("tdelete").innerHTML = "Eliminar";
 		translations[0] = "Añadir producto";
-		translations[1] = "Producto";
-		translations[2] = "Fecha de caducidad";
-		translations[3] = "Fecha no valida! El formato tiene que ser AAAA-MM-DD";
-		translations[4] = "Eliminar ";
+		translations[1] = "El nombre de producto esta vacio!";
+		translations[2] = "Fecha no valida! El formato tiene que ser AAAA-MM-DD";
 	}
+}
+
+function cancel()
+{
+	document.getElementById("input").style.display = "none";
+	document.getElementById("delete").style.display = "none";
+}
+
+function deleteProduct()
+{
+	products.splice(indexToDelete, 1);
+	refresh();
+	save();
+	document.getElementById("delete").style.display = "none";
 }
