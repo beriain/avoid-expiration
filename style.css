@@ -18,10 +18,8 @@ div.product{
 	padding:5px;
 }
 
-button#showAddInput{
+img{
 	float:right;
-	border:none;
-	background:none;
 	position:relative;
   	top:50%;
   	transform:translateY(-50%);
