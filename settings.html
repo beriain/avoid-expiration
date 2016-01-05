@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Settings</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="settings.js"></script>
+	</head>
+	<body onload="readSettings();">
+		<div id="header">
+      <a href="index.html"><img src="img/left.svg" id="back"/></a>
+			<span id="title">Settings</span>
+		</div>
+		<div id="settings">
+      <div class="setting">
+        <b id="titleNot">NOTIFICATIONS</b><hr>
+				<table>
+					<tr>
+	        	<td><span id="descNot">Notify when a product is going to expire</span></td>
+						<td><input type="checkbox" id="notify" onchange="saveSettings()"></td>
+					</tr>
+				</table>
+      </div>
+			<div class="setting">
+        <b id="titleDays">DAYS</b><hr>
+				<table>
+					<tr>
+	        	<td id="descRed">Days for red warning</td><td><input type="number" id="daysForRed" value="3" onchange="saveSettings()"></td>
+					</tr>
+					<tr>
+						<td id="descOrange">Days for orange warning</td><td><input type="number" id="daysForOrange" value=7 onchange="saveSettings()"></td>
+					</tr>
+				</table>
+      </div>
+		</div>
+	</body>
+</html>

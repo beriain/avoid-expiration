@@ -1,6 +1,7 @@
 var products = new Array();
 var translations = new Array();
 var indexToDelete = 0;
+var settings = new Array();
 
 function showAddInput()
 {
@@ -12,7 +13,7 @@ function showAddInput()
 	document.getElementById("year").value = d.getFullYear();
 	document.getElementById("month").value = d.getMonth()+1;
 	document.getElementById("day").value = d.getDate();
-	
+
 	/*document.getElementById("header").style.opacity = "0.6";
 	document.getElementById("main").style.opacity = "0.6";*/
 }
@@ -36,7 +37,7 @@ function add()
 		document.getElementById("product").placeholder = translations[1];
 		document.getElementById("product").focus();
 	}
-	
+
 }
 
 function checkDate(d)
@@ -58,12 +59,12 @@ function refresh()
 		div.setAttribute("data-index", x);
 		div.className = "product";
 		div.innerHTML = products[x].name + "<span class='data'>" + new Date(products[x].date).toISOString().split('T')[0] + "</span>";
-		if(daysToExpire(products[x].date) <= 3)
+		if(daysToExpire(products[x].date) <= settings[1].value)
 		{
 			div.style.background = "#B90000";
 			div.style.color = "white";
 		}
-		if(daysToExpire(products[x].date) >= 3 && daysToExpire(products[x].date) <= 7)
+		if(daysToExpire(products[x].date) > settings[1].value && daysToExpire(products[x].date) <= settings[2].value)
 		{
 			div.style.background = "#CD6723";
 			div.style.color = "white";
@@ -89,6 +90,7 @@ function start()
 {
 	try
 	{
+		settings = JSON.parse(localStorage["settings"]);
 		products = JSON.parse(localStorage["products"]);
 		refresh();
 	}
@@ -107,7 +109,7 @@ function daysToExpire(date)
     var mpd = 1000 * 60 * 60 * 24;
     var mb = new Date(date).getTime() - new Date().getTime();
     var dte = mb / mpd;
-    return Math.round(dte);
+    return Math.round(dte)+1;
 }
 
 function translate()
