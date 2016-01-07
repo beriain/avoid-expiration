@@ -93,6 +93,8 @@ function start()
 		settings = JSON.parse(localStorage["settings"]);
 		products = JSON.parse(localStorage["products"]);
 		refresh();
+		if(settings[0].value == 1)
+			notify();
 	}
 	catch(e)
 	{
@@ -164,4 +166,48 @@ function deleteProduct()
 	refresh();
 	save();
 	document.getElementById("delete").style.display = "none";
+}
+
+function notify()
+{
+	if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+	else
+	{
+		Notification.requestPermission(function (permission) {
+			if (permission === "granted") {
+				var redText = "";
+				var orangeText = "";
+				var red = 0;
+				var orange = 0;
+				var x  = 0;
+				while(x < products.length)
+				{
+					if(daysToExpire(products[x].date) <= settings[1].value)
+					{
+						red++;
+					}
+					if(daysToExpire(products[x].date) > settings[1].value && daysToExpire(products[x].date) <= settings[2].value)
+					{
+						orange++;
+					}
+					x++;
+				}
+				if(red == 1)
+					//console.log("1 product is going to expire in less than " + settings[1].value + " days.");
+					redText = "1 product is going to expire in less than " + settings[1].value + " days.";
+				else if(red != 0)
+					//console.log(red + " products are going to expire in less than " + settings[1].value + " days.");
+					redText = red + " products are going to expire in less than " + settings[1].value + " days.";
+				if(orange == 1)
+					//console.log("1 product is going to expire in less than " + settings[2].value + " days.");
+					orangeText = "1 product is going to expire in less than " + settings[2].value + " days.";
+				else if(orange != 0)
+					//console.log(orange + " products are going to expire in less than " + settings[2].value + " days.");
+					orangeText = orange + " products are going to expire in less than " + settings[2].value + " days.";
+				var notification = new Notification(redText + " - " + orangeText);
+			}
+		});
+	}
 }
