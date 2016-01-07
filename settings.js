@@ -56,6 +56,7 @@ function translate()
 {
   if(navigator.language.substring(0, 2) == "eu")
 	{
+    document.title = "Ezarpenak";
 		document.getElementById("title").innerHTML = "Ezarpenak";
     document.getElementById("titleNot").innerHTML = "JAKINARAZPENAK";
     document.getElementById("descNot").innerHTML = "Produkturen bat iraungitzera doanean jakinarazi";
@@ -65,6 +66,7 @@ function translate()
 	}
   if(navigator.language.substring(0, 2) == "es")
   {
+    document.title = "Configuración";
     document.getElementById("title").innerHTML = "Configuración";
     document.getElementById("titleNot").innerHTML = "NOTIFICACIONES";
     document.getElementById("descNot").innerHTML = "Notificar cuando algún producto vaya a caducar";

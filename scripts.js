@@ -122,6 +122,7 @@ function translate()
 	translations[4] = "Delete ";
 	if(navigator.language.substring(0, 2) == "eu")
 	{
+		document.title = "Iraungitzea ekiditu";
 		document.getElementById("title").innerHTML = "Iraungitzea ekiditu";
 		document.getElementById("badd").innerHTML = "Gehitu";
 		document.getElementById("bcancel1").innerHTML = "Utzi";
@@ -136,6 +137,7 @@ function translate()
 	}
 	if(navigator.language.substring(0, 2) == "es")
 	{
+		document.title = "Evitar caducidades";
 		document.getElementById("title").innerHTML = "Evitar caducidades";
 		document.getElementById("badd").innerHTML = "Añadir";
 		document.getElementById("bcancel1").innerHTML = "Cancelar";
