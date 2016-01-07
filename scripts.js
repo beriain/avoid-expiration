@@ -97,6 +97,7 @@ function start()
 	catch(e)
 	{
 		console.log(e);
+		initializeSettings();
 	}
 	finally
 	{
