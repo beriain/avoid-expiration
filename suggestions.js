@@ -25,32 +25,6 @@ function loadSuggestions()
     }
   }
   translate();
-  /**/
-  /*try
-  {
-    suggestions = JSON.parse(localStorage["suggestions"]);
-    document.getElementById("suggestions").innerHTML = "";
-    suggestions.sort();
-    for(x = 0; x < suggestions.length; x++)
-    {
-      var div = document.createElement("div");
-  		div.setAttribute("data-index", x);
-  		div.className = "suggestion";
-      div.innerHTML = suggestions[x];
-      div.onclick = function()
-      {
-        var index = this.getAttribute("data-index");
-        document.getElementById("sname").innerHTML = suggestions[index];
-        indexToDelete = index;
-        document.getElementById("delete").style.display = "block";
-      }
-      document.getElementById("suggestions").appendChild(div);
-    }
-  }
-  catch(e)
-  {
-    console.log(e);
-  }*/
 }
 
 function cancel()
