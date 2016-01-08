@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Manage suggestions</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="suggestions.js"></script>
+	</head>
+	<body onload="loadSuggestions();">
+		<div id="header">
+      <a href="settings.html"><img src="img/left.svg" id="back"/></a>
+			<span id="title">Manage suggestions</span>
+		</div>
+		<div id="suggestions">
+		</div>
+		<div id="delete">
+			<span id="tdelete">Delete</span> <span id="sname"></span>?<br/>
+			<button id="bdelete" onclick="deleteSuggestion()">Delete</button>
+			<button id="bcancel2" onclick="cancel()">Cancel</button>
+		</div>
+	</body>
+</html>

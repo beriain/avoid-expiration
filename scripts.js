@@ -2,6 +2,7 @@ var products = new Array();
 var translations = new Array();
 var indexToDelete = 0;
 var settings = new Array();
+var suggestions = new Array();
 
 function showAddInput()
 {
@@ -31,6 +32,11 @@ function add()
 		document.getElementById("input").style.display = "none";
 		refresh();
 		save();
+		if(suggestions.indexOf(pname) == -1)
+		{
+			suggestions.push(pname);
+			setSuggestion();
+		}
 	}
 	else
 	{
@@ -88,23 +94,26 @@ function save()
 
 function start()
 {
-	try
-	{
+	if(localStorage.getItem("settings") != null)
 		settings = JSON.parse(localStorage["settings"]);
+	else
+		initializeSettings();
+	
+	if(localStorage.getItem("products") != null)
+	{
 		products = JSON.parse(localStorage["products"]);
 		refresh();
-		if(settings[0].value == 1)
-			notify();
 	}
-	catch(e)
+
+	if(localStorage.getItem("suggestions") != null)
 	{
-		console.log(e);
-		initializeSettings();
+		suggestions = JSON.parse(localStorage["suggestions"]);
+		setSuggestion();
 	}
-	finally
-	{
-		translate();
-	}
+
+	if(settings[0].value == 1)
+		notify();
+	translate();
 }
 
 function daysToExpire(date)
@@ -210,4 +219,16 @@ function notify()
 			}
 		});
 	}
+}
+
+function setSuggestion()
+{
+  var options = "";
+
+  for(var i = 0; i < suggestions.length; i++)
+    options += '<option value="'+suggestions[i]+'" />';
+
+  document.getElementById("suggestions").innerHTML = options;
+
+	localStorage["suggestions"] = JSON.stringify(suggestions);
 }

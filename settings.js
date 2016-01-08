@@ -28,9 +28,9 @@ function saveSettings()
 
 function readSettings()
 {
-  try
-	{
-		settings = JSON.parse(localStorage["settings"]);
+  if(localStorage.getItem("settings") != null)
+  {
+    settings = JSON.parse(localStorage["settings"]);
     if(settings[0].value == 0)
       document.getElementById("notify").checked = false;
     else
@@ -39,17 +39,13 @@ function readSettings()
     document.getElementById("daysForRed").value = settings[1].value;
 
     document.getElementById("daysForOrange").value = settings[2].value;
-	}
-	catch(e)
-	{
-		console.log(e);
+  }
+  else
+  {
     initializeSettings();
     saveSettings();
-	}
-  finally
-  {
-    translate();
   }
+  translate();
 }
 
 function translate()
@@ -63,6 +59,7 @@ function translate()
     document.getElementById("titleDays").innerHTML = "EGUNAK";
     document.getElementById("descRed").innerHTML = "Egunak abisu gorrirako";
     document.getElementById("descOrange").innerHTML = "Egunak abisu laranjarako";
+    document.getElementById("mSug").innerHTML = "Iradokizun zerrendatik hitzak ezabatu";
 	}
   if(navigator.language.substring(0, 2) == "es")
   {
@@ -73,5 +70,6 @@ function translate()
     document.getElementById("titleDays").innerHTML = "DÍAS";
     document.getElementById("descRed").innerHTML = "Días para aviso rojo";
     document.getElementById("descOrange").innerHTML = "Días para aviso naranja";
+    document.getElementById("mSug").innerHTML = "Eliminar palabras de lista de sujerencias";
   }
 }

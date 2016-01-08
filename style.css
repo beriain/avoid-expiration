@@ -93,3 +93,17 @@ div.setting{
 	padding: 5px;
 	color: #2C393B;
 }
+
+div#suggestions{
+	background-color: #F4F4F4;
+	flex-grow: 1;
+}
+
+div.suggestion{
+	padding:5px;
+}
+
+a#msug{
+	color: black;
+	text-decoration: none;
+}
