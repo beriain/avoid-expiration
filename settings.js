@@ -70,6 +70,6 @@ function translate()
     document.getElementById("titleDays").innerHTML = "DÍAS";
     document.getElementById("descRed").innerHTML = "Días para aviso rojo";
     document.getElementById("descOrange").innerHTML = "Días para aviso naranja";
-    document.getElementById("mSug").innerHTML = "Eliminar palabras de lista de sujerencias";
+    document.getElementById("mSug").innerHTML = "Eliminar palabras de lista de sugerencias";
   }
 }
