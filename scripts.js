@@ -142,7 +142,8 @@ function translate()
 		document.getElementById("tproduct").innerHTML = "Produktua";
 		document.getElementById("texpdate").innerHTML = "Iraungitze data";
 		document.getElementById("tdelete").innerHTML = "Ezabatu";
-		translations[0] = "Produktua gehitu";
+		document.getElementById("titAddProduct").innerHTML = "Produktua gehitu";
+		document.getElementById("titDeleteProduct").innerHTML = "Produktua ezabatu";
 		translations[1] = "Produktuaren izena hutsik dago!";
 		translations[2] = "Akatsa data sartzerakoan!formatua UUUU-HH-EE izan behar da";
 	}
@@ -157,7 +158,8 @@ function translate()
 		document.getElementById("tproduct").innerHTML = "Producto";
 		document.getElementById("texpdate").innerHTML = "Fecha de caducidad";
 		document.getElementById("tdelete").innerHTML = "Eliminar";
-		translations[0] = "Añadir producto";
+		document.getElementById("titAddProduct").innerHTML = "Añadir producto";
+		document.getElementById("titDeleteProduct").innerHTML = "Eliminar producto";
 		translations[1] = "El nombre de producto esta vacio!";
 		translations[2] = "Fecha no valida! El formato tiene que ser AAAA-MM-DD";
 	}

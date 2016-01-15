@@ -44,18 +44,20 @@ function translate()
 {
   if(navigator.language.substring(0, 2) == "eu")
 	{
-    document.title = "Iradokizunak kudeatu";
+		document.title = "Iradokizunak kudeatu";
 		document.getElementById("title").innerHTML = "Iradokizunak kudeatu";
-    document.getElementById("bdelete").innerHTML = "Ezabatu";
+		document.getElementById("titDeleteSuggestion").innerHTML = "Iradokizuna ezabatu";
+		document.getElementById("bdelete").innerHTML = "Ezabatu";
 		document.getElementById("tdelete").innerHTML = "Ezabatu";
-    document.getElementById("bcancel2").innerHTML = "Utzi";
+		document.getElementById("bcancel2").innerHTML = "Utzi";
 	}
   if(navigator.language.substring(0, 2) == "es")
   {
-    document.title = "Gestionar sugerencias";
+		document.title = "Gestionar sugerencias";
 		document.getElementById("title").innerHTML = "Gestionar sugerencias";
-    document.getElementById("bdelete").innerHTML = "Eliminar";
+		document.getElementById("titDeleteSuggestion").innerHTML = "Eliminar sugerencia";
+		document.getElementById("bdelete").innerHTML = "Eliminar";
 		document.getElementById("tdelete").innerHTML = "Eliminar";
-    document.getElementById("bcancel2").innerHTML = "Cancelar";
+		document.getElementById("bcancel2").innerHTML = "Cancelar";
   }
 }

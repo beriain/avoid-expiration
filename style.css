@@ -107,3 +107,14 @@ a#msug{
 	color: black;
 	text-decoration: none;
 }
+
+hr{
+	color:#00AACC;
+	width: auto;
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
+span.title{
+	color:#00AACC;
+}
