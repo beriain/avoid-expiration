@@ -108,7 +108,7 @@ a#msug{
 	text-decoration: none;
 }
 
-hr{
+hr.title{
 	color:#00AACC;
 	width: auto;
 	margin-left: -5px;
